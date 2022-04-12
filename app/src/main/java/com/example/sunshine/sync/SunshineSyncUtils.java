@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.example.sunshine.data.WeatherContract;
 
@@ -41,6 +43,7 @@ public class SunshineSyncUtils {
      * @param context Context used to create the GooglePlayDriver that powers the
      *                FirebaseJobDispatcher
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     static void scheduleFirebaseJobDispatcherSync(@NonNull final Context context) {
 
         Driver driver = new GooglePlayDriver(context);
@@ -96,6 +99,7 @@ public class SunshineSyncUtils {
      * @param context Context that will be passed to other methods and used to access the
      *                ContentResolver
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     synchronized public static void initialize(@NonNull final Context context) {
 
         /*
